@@ -1,0 +1,70 @@
+<main>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title mb-3">Formulario de registro</h5>
+        <div class="row">
+          <div class="col-8">
+            <form [formGroup]="registerForm" class="row g-3" (ngSubmit)="onSubmit()">
+              <div class="col-6">
+                <label class="form-label" for="firstName">Nombre</label>
+                <input [formControl]="firstNameControl" class="form-control" type="text" />
+                <app-error-helper [control]="firstNameControl"></app-error-helper>
+                <br>
+                {{ firstNameControl.errors | json }}
+              </div>
+              <div class="col-6">
+                <label class="form-label" for="lastName">Apellido</label>
+                <input [formControl]="lastNameControl" class="form-control" type="text" />
+                <app-error-helper [control]="lastNameControl"></app-error-helper>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="email">E-mail</label>
+                <input [formControl]="emailControl" class="form-control" type="email" />
+                <app-error-helper [control]="emailControl"></app-error-helper>
+              </div>
+              <div class="col-6">
+                <label class="form-label" for="password">Password</label>
+                <input [formControl]="passwordControl" class="form-control" type="password" />
+              </div>
+              <div class="col-6">
+                <label class="form-label" for="repeatPassword">Repita password</label>
+                <input [formControl]="repeatPasswordControl" class="form-control" type="password" />
+              </div>
+              <div class="col-8">
+                <label class="form-label" for="streetName">Calle</label>
+                <input [formControl]="streetNameControl" class="form-control" type="text" />
+              </div>
+              <div class="col-4">
+                <label class="form-label" for="streetNumber">Nro</label>
+                <input [formControl]="streetNumberControl" class="form-control" type="text" />
+              </div>
+              <div class="col-12">
+                <select [formControl]="countryControl" class="form-select">
+                  <option value="">Selecciona un pais</option>
+                  <option value="'ar'">Argentina</option>
+                  <option value="mx">Mexico</option>
+                </select>
+              </div>
+              <div class="col-12 d-flex justify-content-center">
+                <div class="form-check">
+                  <input [formControl]="signedTermsControl" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Acepto terminos y condiciones
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 d-flex justify-content-end">
+                <button [disabled]="registerForm.invalid" class="btn btn-primary" type="submit">Enviar</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-4">
+            <h3>ES VALIDO? {{ registerForm.valid }}</h3>
+            <pre>{{ registerForm.value | json }}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
