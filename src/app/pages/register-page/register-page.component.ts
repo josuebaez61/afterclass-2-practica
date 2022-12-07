@@ -40,7 +40,7 @@ export class RegisterPageComponent {
     signedTerm: this.signedTermsControl,
   }, {
     validators: [
-      this.passwordsMatchValidator
+      this.passwordsMatchValidator()
     ]
   })
 
